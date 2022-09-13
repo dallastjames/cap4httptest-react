@@ -1,22 +1,40 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import "./Home.css";
 
 const Home: React.FC = () => {
+  const makeRequest = async () => {
+    const res = await fetch("http://10.0.0.11:3000");
+    if (res.status === 200) {
+      const data = await res.json();
+      console.log("SUCCESS", data);
+    } else {
+      console.log("ERROR", res.body);
+    }
+  };
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Capacitor HTTP</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+            <IonTitle size="large">Capacitor HTTP</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <IonButton onClick={() => makeRequest()} color="primary" type="button">
+          Make Request
+        </IonButton>
       </IonContent>
     </IonPage>
   );
