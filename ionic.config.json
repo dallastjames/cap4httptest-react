@@ -1,0 +1,7 @@
+{
+  "name": "cap4http-react",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
